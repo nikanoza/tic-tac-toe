@@ -4,6 +4,9 @@ const board = document.querySelector("#board");
 
 let player1 = "x";
 let mode = "cpu";
+let xScore = 0;
+let tieScore = 0;
+let oScore = 0;
 
 const activateChoice = (icon) => {
   if (icon === "x") {
