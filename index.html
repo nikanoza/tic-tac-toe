@@ -23,7 +23,7 @@
       <div class="panel">
         <h2 class="header-title title">PICK PLAYER 1’S MARK</h2>
         <div class="buttons">
-          <button class="btn-box active">
+          <button class="btn-box active" onclick="activateChoice('x')">
             <svg
               width="64"
               height="64"
@@ -37,7 +37,7 @@
               />
             </svg>
           </button>
-          <button class="btn-box">
+          <button class="btn-box" onclick="activateChoice('o')">
             <svg
               width="64"
               height="64"
@@ -51,8 +51,15 @@
             </svg>
           </button>
         </div>
+        <p class="warning">REMEMBER : X GOES FIRST</p>
       </div>
+      <button class="new-game-btn cpu-btn" onclick="startGame('cpu')">
+        <p class="title btn-text">NEW GAME (VS CPU)</p>
+      </button>
+      <button class="new-game-btn player-btn" onclick="startGame('player')">
+        <p class="title btn-text">NEW GAME  (VS PLAYER)</p>
+      </button>
     </section>
-    <section id="board"></section>
+    <section id="board">game start</section>
   </body>
 </html>

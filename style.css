@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
 }
 
 :root {
@@ -20,7 +21,6 @@
 body {
   width: 100vw;
   height: 100vh;
-  font-family: "Outfit", sans-serif;
   background-color: var(--darkBg);
   display: flex;
   align-items: center;
@@ -95,4 +95,42 @@ body {
 
 .active svg path {
   fill: var(--darkBg);
+}
+
+.warning{
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17.64px;
+  letter-spacing: 0.88px;
+  color: var(--light);
+  opacity: 0.5;
+  margin-top: 17px;
+}
+
+.new-game-btn {
+  width: 327px;
+  padding: 14px 0 22px 0;
+  box-shadow: inset 0px -8px 0px #CC8B13;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.cpu-btn{
+  background-color: var(--orange);
+  margin-top: 32px;
+}
+
+.btn-text{
+  color: var(--darkBg)
+}
+
+.player-btn{
+  background-color: var(--sky);
+  margin-top: 16px;
+  box-shadow: inset 0px -8px 0px #118C87;
+}
+
+#board{
+  display: none;
 }
