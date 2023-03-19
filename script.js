@@ -6,15 +6,10 @@ const board = document.querySelector("#board");
 let player1 = "x";
 let mode = "cpu";
 let turn = "x";
-let xScore = 0;
-let oScore = 0;
-let tieScore = 0;
-
-let freeBoxes = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+let freeButtons = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let xArray = [];
 let oArray = [];
-
-let winningCombinations = [
+let winnerCombinations = [
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
@@ -37,9 +32,9 @@ const activateChoice = (icon) => {
   }
 };
 
-const onHovers = () => {
-  for (let index = 0; index < freeBoxes.length; index++) {
-    const playButtonIndex = freeBoxes[index];
+const onHoverEffects = () => {
+  for (let index = 0; index < freeButtons.length; index++) {
+    const playButtonIndex = freeButtons[index];
     if (turn === "x") {
       playButtons[playButtonIndex].classList.add("xHover");
       playButtons[playButtonIndex].classList.remove("oHover");
@@ -50,31 +45,28 @@ const onHovers = () => {
   }
 };
 
-onHovers();
-
-const createClickedEvents = () => {
+const createClickedFunctions = () => {
   for (let index = 0; index < playButtons.length; index++) {
     playButtons[index].onclick = (event) => {
-      const spliceIndex = freeBoxes.indexOf(index);
-      freeBoxes.splice(spliceIndex, 1);
       event.target.classList.remove("xHover");
       event.target.classList.remove("oHover");
+
+      const spliceIndex = freeButtons.indexOf(index);
+      freeButtons.splice(spliceIndex, 1);
+
+      const icon = document.createElement("img");
+      icon.classList.add("play-icon");
       if (turn === "x") {
-        const icon = document.createElement("img");
-        icon.classList.add("play-icon");
         icon.src = "./assets/icon-x.svg";
         event.target.append(icon);
-        xArray.push(index);
-        turn = "0";
+        turn = "o";
       } else {
-        const icon = document.createElement("img");
-        icon.classList.add("play-icon");
         icon.src = "./assets/icon-o.svg";
         event.target.append(icon);
-        oArray.push(index);
         turn = "x";
       }
-      onHovers();
+      onHoverEffects();
+
       event.target.onclick = null;
     };
   }
@@ -85,5 +77,6 @@ const startGame = (modeParam) => {
   board.style.display = "flex";
   document.body.style.alignItems = "flex-start";
   mode = modeParam;
-  createClickedEvents();
+  onHoverEffects();
+  createClickedFunctions();
 };
